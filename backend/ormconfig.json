@@ -5,10 +5,14 @@
   "username": "postgres",
   "password": "docker",
   "database": "gostack_gobarber",
+  "entities": [
+    "./src/models/*.ts"
+  ],
   "migrations": [
     "./src/database/migrations/*.ts"
   ],
   "cli": {
+    "entitiesDir": "./src/models",
     "migrationsDir": "./src/database/migrations"
   }
 }
