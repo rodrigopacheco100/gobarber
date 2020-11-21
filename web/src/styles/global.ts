@@ -23,14 +23,6 @@ export default createGlobalStyle`
     font-weight: 500;
   }
 
-  input {
-    color: #f4ede8;
-
-    &::placeholder {
-      color: #666360;
-    }
-  }
-
   button {
     cursor: pointer;
   }
