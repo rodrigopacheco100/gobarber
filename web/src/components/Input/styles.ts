@@ -48,7 +48,14 @@ export const Container = styled.div<ContainerProps>`
     flex: 1;
 
     &::placeholder {
-      color: #666360;
+      ${props =>
+        props.isFocused
+          ? css`
+              color: #ff9000;
+            `
+          : css`
+              color: #666360;
+            `}
     }
   }
 
