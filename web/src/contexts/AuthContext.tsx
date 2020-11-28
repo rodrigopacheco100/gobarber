@@ -1,4 +1,4 @@
-import React, { createContext, useCallback } from 'react';
+import React, { createContext, useCallback, useContext } from 'react';
 
 import api from '../services/api';
 
@@ -12,9 +12,12 @@ interface AuthContextData {
   signIn(credentials: SignInCredentials): Promise<void>;
 }
 
-export const AuthContext = createContext<AuthContextData>(
-  {} as AuthContextData,
-);
+const AuthContext = createContext<AuthContextData>({} as AuthContextData);
+
+export function useAuth(): AuthContextData {
+  const authContext = useContext(AuthContext);
+  return authContext;
+}
 
 export const AuthProvider: React.FC = ({ children }) => {
   const signIn = useCallback(async ({ email, password }: SignInCredentials) => {
