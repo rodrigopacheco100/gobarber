@@ -10,7 +10,7 @@ import Input from '../../components/Input';
 
 import { Container, Content, Background } from './styles';
 import getValidationErrors from '../../utils/getValidationErrors';
-import { SignInCredentials, useAuth } from '../../contexts/AuthContext';
+import { SignInCredentials, useAuth } from '../../hooks/AuthContext';
 
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
