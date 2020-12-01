@@ -4,6 +4,7 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as yup from 'yup';
 
+import { Link } from 'react-router-dom';
 import logoImg from '../../assets/logo.svg';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -36,9 +37,10 @@ const SignIn: React.FC = () => {
 
         await signIn({ email: data.email, password: data.password });
       } catch (err) {
-        if (err instanceof yup.ValidationError)
+        if (err instanceof yup.ValidationError) {
           formRef.current?.setErrors(getValidationErrors(err));
-
+          return;
+        }
         addToast({
           title: 'Erro na autenticação',
           type: 'error',
@@ -67,13 +69,13 @@ const SignIn: React.FC = () => {
 
           <Button type="submit">Entrar</Button>
 
-          <a href="/">Esqueci minha senha</a>
+          <Link to="/">Esqueci minha senha</Link>
         </Form>
 
-        <a href="/">
+        <Link to="/signup">
           <FiLogIn />
           Criar conta
-        </a>
+        </Link>
       </Content>
 
       <Background />
