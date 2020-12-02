@@ -7,7 +7,7 @@ interface AuthState {
   user: object;
 }
 
-export interface SignInCredentials {
+interface SignInCredentials {
   email: string;
   password: string;
 }

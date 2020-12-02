@@ -4,24 +4,30 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as yup from 'yup';
 
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import logoImg from '../../assets/logo.svg';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 
 import { Container, Content, Background } from './styles';
-import { SignInCredentials, useAuth } from '../../hooks/auth';
+import { useAuth } from '../../hooks/auth';
 import { useToast } from '../../hooks/toast';
 import getValidationErrors from '../../utils/getValidationErrors';
+
+interface SignInFormData {
+  email: string;
+  password: string;
+}
 
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   const { signIn } = useAuth();
   const { addToast } = useToast();
+  const { push } = useHistory();
 
   const handleSubmit = useCallback(
-    async (data: SignInCredentials) => {
+    async (data: SignInFormData) => {
       try {
         formRef.current?.setErrors({});
 
@@ -35,12 +41,16 @@ const SignIn: React.FC = () => {
 
         await schema.validate(data, { abortEarly: false });
 
-        await signIn({ email: data.email, password: data.password });
+        const { email, password } = data;
+        await signIn({ email, password });
+
+        push('/dashboard');
       } catch (err) {
         if (err instanceof yup.ValidationError) {
           formRef.current?.setErrors(getValidationErrors(err));
           return;
         }
+
         addToast({
           title: 'Erro na autenticação',
           type: 'error',
