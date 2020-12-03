@@ -1,6 +1,6 @@
 import { ErrorRequestHandler } from 'express';
 import { format } from 'date-fns';
-import AppError from '../errors/AppError';
+import AppError from '@shared/errors/AppError';
 
 const errorHandler: ErrorRequestHandler = (
   err: Error,
