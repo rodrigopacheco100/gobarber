@@ -23,12 +23,21 @@
         "prettier"
     ],
     "rules": {
+      "no-useless-constructor": "off",
       "camelcase": "off",
       "class-methods-use-this": "off",
       "prettier/prettier": "error",
       "@typescript-eslint/no-unused-vars": ["error", {
         "argsIgnorePattern": "_"
       }],
+      "@typescript-eslint/naming-convention": [
+        "error",
+        {
+          "selector": "interface",
+          "prefix": ["I"],
+          "format": ["PascalCase"]
+        }
+      ],
       "import/extensions": [
         "error",
         "ignorePackages",
