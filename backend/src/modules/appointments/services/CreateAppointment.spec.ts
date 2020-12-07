@@ -1,5 +1,5 @@
 import AppError from '@shared/errors/AppError';
-import FakeAppointmentRepository from '../repositories/fakes/FakeAppointment';
+import FakeAppointmentRepository from '../repositories/fakes/Appointment';
 import CreateAppointmentService from './CreateAppointment';
 
 describe('CreateAppointment', () => {
@@ -25,7 +25,7 @@ describe('CreateAppointment', () => {
       appointmentRepository,
     );
 
-    const date = new Date(2020, 5, 1, 11);
+    const date = new Date();
 
     await createAppointment.execute({
       date,
