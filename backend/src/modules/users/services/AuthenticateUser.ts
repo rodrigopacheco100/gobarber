@@ -4,7 +4,7 @@ import { inject, injectable } from 'tsyringe';
 import auth from '@config/auth';
 import AppError from '@shared/errors/AppError';
 import IUserRepository from '../repositories/IUser';
-import IHashProvider from '../providers/HashProvider/models/IHashProvider';
+import IHashProvider from '../providers/Hash/models/IHashProvider';
 
 import User from '../infra/typeorm/entities/User';
 

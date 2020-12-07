@@ -1,5 +1,5 @@
 import AppError from '@shared/errors/AppError';
-import FakeHashProvider from '../providers/HashProvider/fakes/HashProvider';
+import FakeHashProvider from '../providers/Hash/fakes/HashProvider';
 import FakeUserRepository from '../repositories/fakes/User';
 import CreateUserService from './CreateUser';
 
