@@ -1,6 +1,5 @@
 import FakeStorageProvider from '@shared/container/providers/Storage/fakes/FakeStorage';
 import AppError from '@shared/errors/AppError';
-import FakeHashProvider from '../providers/Hash/fakes/HashProvider';
 import FakeUserRepository from '../repositories/fakes/User';
 import UpdateUserAvatarService from './UpdateUserAvatar';
 
@@ -32,7 +31,7 @@ describe('UpdateUserAvatar', () => {
     expect(user.avatar).toBe('avatar2.jpg');
   });
 
-  it('should be able to create an user', async () => {
+  it('should not be able to update avatar from non existing user', async () => {
     const userRepository = new FakeUserRepository();
     const storageProvider = new FakeStorageProvider();
     const updateUserAvatar = new UpdateUserAvatarService(
@@ -40,7 +39,7 @@ describe('UpdateUserAvatar', () => {
       storageProvider,
     );
 
-    expect(
+    await expect(
       updateUserAvatar.execute({
         user_id: 'lllllll',
         avatarFilename: 'avatar.jpg',
