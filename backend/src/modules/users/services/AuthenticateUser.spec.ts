@@ -48,19 +48,19 @@ describe('AuthenticateUser', () => {
       hashProvider,
     );
 
-    expect(
+    await expect(
       authenticateUser.execute({
         email: 'johndoe2@gmail.com',
         password: '123456',
       }),
     ).rejects.toBeInstanceOf(AppError);
-    expect(
+    await expect(
       authenticateUser.execute({
         email: 'johndoe@gmail.com',
         password: '1234567',
       }),
     ).rejects.toBeInstanceOf(AppError);
-    expect(
+    await expect(
       authenticateUser.execute({
         email: 'johndoe2@gmail.com',
         password: '1234567',
