@@ -3,15 +3,21 @@ import AppError from '@shared/errors/AppError';
 import FakeUserRepository from '../repositories/fakes/User';
 import UpdateUserAvatarService from './UpdateUserAvatar';
 
+let userRepository: FakeUserRepository;
+let storageProvider: FakeStorageProvider;
+let updateUserAvatar: UpdateUserAvatarService;
+
 describe('UpdateUserAvatar', () => {
-  it('should be able to update user avatar', async () => {
-    const userRepository = new FakeUserRepository();
-    const storageProvider = new FakeStorageProvider();
-    const updateUserAvatar = new UpdateUserAvatarService(
+  beforeEach(() => {
+    userRepository = new FakeUserRepository();
+    storageProvider = new FakeStorageProvider();
+    updateUserAvatar = new UpdateUserAvatarService(
       userRepository,
       storageProvider,
     );
+  });
 
+  it('should be able to update user avatar', async () => {
     const user = await userRepository.create({
       name: 'John Doe',
       email: 'johndoe@gmail.com',
@@ -32,13 +38,6 @@ describe('UpdateUserAvatar', () => {
   });
 
   it('should not be able to update avatar from non existing user', async () => {
-    const userRepository = new FakeUserRepository();
-    const storageProvider = new FakeStorageProvider();
-    const updateUserAvatar = new UpdateUserAvatarService(
-      userRepository,
-      storageProvider,
-    );
-
     await expect(
       updateUserAvatar.execute({
         user_id: 'lllllll',
