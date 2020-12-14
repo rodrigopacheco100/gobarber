@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 
 @Entity('user_tokens')
-export default class User {
+export default class UserToken {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
