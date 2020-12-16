@@ -1,4 +1,4 @@
-import IUserTokenRepository from '@modules/users/repositories/IUserToken';
+import IUserTokenRepository from '@modules/users/repositories/IUserTokenRepository';
 import UserToken from '../entities/UserToken';
 
 export default class UserTokenRepository implements IUserTokenRepository {
