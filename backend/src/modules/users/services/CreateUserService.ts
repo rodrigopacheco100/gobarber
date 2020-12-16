@@ -23,11 +23,9 @@ export default class CreateUserService {
   ) {}
 
   public async execute({ name, email, password }: IRequest): Promise<User> {
-    const isThereUserWithSameEmail = await this.userRepository.findByEmail(
-      email,
-    );
+    const findUserWithSameEmail = await this.userRepository.findByEmail(email);
 
-    if (isThereUserWithSameEmail) {
+    if (findUserWithSameEmail) {
       throw new AppError('Email address already used.');
     }
 
