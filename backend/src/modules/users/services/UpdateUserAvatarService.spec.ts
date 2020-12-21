@@ -1,5 +1,5 @@
 import AppError from '@shared/errors/AppError';
-import FakeStorageProvider from '@shared/providers/Storage/fakes/FakeStorage';
+import FakeStorageProvider from '@shared/providers/Storage/fakes/FakeStorageProvider';
 import FakeUserRepository from '../repositories/fakes/FakeUserRepository';
 import UpdateUserAvatarService from './UpdateUserAvatarService';
 
